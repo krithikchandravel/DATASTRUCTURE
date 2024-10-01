@@ -1,0 +1,49 @@
+class intopfix:
+
+    def __init__(self):
+
+        self.stack=[]
+
+    def push(self,char):
+        self.stack.append(char)
+    def pop(self):
+        return self.stack.pop()
+    def priority(char):
+        if char=="^":
+            return 3
+        elif char=="*" or char =="/":
+            return 2
+        elif char=="+" or char =="-":
+            return 1
+        else:
+            return 0
+        
+def intopo(expr):
+     postfix=[]
+     s=intopfix()
+     for char in expr:
+         if char=="(":
+             s.push(char)
+         elif char.isalnum():
+             postfix.append(char)
+         elif char==")":
+             x=s.pop()
+         while(x!="("):
+             postfix.append(x)
+             x=s.pop()
+     else:
+         while s.stack and s.priority(char)<=s.priority(s.stakc[-1]):
+             s.pop()
+         s.push(char)
+     while s.stack:
+         postfix.append(s.pop())
+         return''.join(postfix)
+expr=input("enter any expression:")
+print(intopo(expr))
+                
+                
+            
+            
+            
+    
+
